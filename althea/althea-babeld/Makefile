@@ -7,12 +7,12 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=althea-babled
+PKG_NAME:=althea-babeld
 PKG_VERSION:=0.1
 PKG_RELEASE:=0
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/althea-mesh/babeld/releases/download/v0.1/althea-babeld-0.1.tar.gz
+PKG_SOURCE_URL:=https://github.com/althea-mesh/babeld/releases/download/v0.1/
 PKG_MD5SUM:=b094b19a05a917400547871b2dc63296
 PKG_LICENSE:=MIT
 
