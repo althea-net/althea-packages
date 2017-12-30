@@ -13,7 +13,7 @@ PKG_RELEASE:=0
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/althea-mesh/babeld/releases/download/v0.1/
-PKG_MD5SUM:=b094b19a05a917400547871b2dc63296
+PKG_HASH:=9d79783d07c899a08e7088d18008e57b9087a9aad7ce74c67c993b3d505af314
 PKG_LICENSE:=MIT
 
 include $(INCLUDE_DIR)/package.mk
