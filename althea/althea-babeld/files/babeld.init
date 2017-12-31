@@ -11,6 +11,13 @@ OTHERCONFIGDIR="/tmp/babeld.d/"
 EXTRA_COMMANDS="status"
 EXTRA_HELP="        status Dump Babel's table to the log file."
 
+# Generate mesh local ip
+add_ip () {
+	local ip=$(generate-ipv6-address -s -r)
+	local current_ips=$(ip addr show $1)
+	[ "$(echo $current_ips | grep -c "inet6 fd")" -lt 1 ] && ip addr add $ip dev $1
+}
+
 # Append a line to the configuration file
 cfg_append() {
         local value="$1"
@@ -126,6 +133,7 @@ babel_config_cb() {
 			# generate configuration for it.
 			[ "$option" = "ifname" ] && return
 			[ -n "$interface" ] && _interface="interface $interface" || _interface="default"
+			add_ip $interface
 			cfg_append "$_interface ${option//_/-} $value"
 		}
 		# Handle ignore options.
