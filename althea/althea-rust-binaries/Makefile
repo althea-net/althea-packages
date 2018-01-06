@@ -39,14 +39,30 @@ else ifeq ($(ARCH),mips)
 	RUST_TRIPLE:=mips-unknown-linux-musl
 endif
 
+RUST_BIN_FILENAMES:=guac-light-client rita
+RUST_BIN_PATHS:=$(foreach filename, $(RUST_BIN_FILENAMES), $(PKG_BUILD_DIR)/target/$(RUST_TRIPLE)/release/$(filename))
+
 define Build/Compile
-	#echo $(TARGET_LDPATH)
-	(cd $(PKG_BUILD_DIR) && RUSTFLAGS="-C linker=$(TARGET_CC)" CFLAGS="$(TARGET_CFLAGS)" CC=$(TARGET_CC) cargo build --all --release --target $(RUST_TRIPLE))
+	(\
+		cd $(PKG_BUILD_DIR) && \
+\
+		RUSTFLAGS="-C linker=$(TARGET_CC)" \
+		TARGET=$(RUST_TRIPLE) \
+		CC=$(TARGET_CC) \
+		CFLAGS="$(TARGET_CFLAGS)" \
+		TARGET_CFLAGS="$(TARGET_CFLAGS)" \
+		CXX=$(TARGET_CXX) \
+		CXXFLAGS="$(TARGET_CXXFLAGS)" \
+		TARGET_CXXFLAGS="$(TARGET_CXXFLAGS)" \
+\
+		cargo build --all --release --target $(RUST_TRIPLE) \
+	)
+	$(STRIP) $(RUST_BIN_PATHS)
 endef
 
 define Package/althea-rust-binaries/install
 	$(INSTALL_DIR) $(1)/usr/sbin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/target/$(RUST_TRIPLE)/release/althea-rust-binaries $(1)/usr/sbin/
+	$(INSTALL_BIN) $(RUST_BIN_PATHS) $(1)/usr/sbin/
 endef
 
 $(eval $(call BuildPackage,althea-rust-binaries))
