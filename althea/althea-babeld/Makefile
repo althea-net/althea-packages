@@ -14,7 +14,7 @@ PKG_RELEASE:=0
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-mesh/babeld
-PKG_SOURCE_VERSION:=4e88ef5eab18afcadfdd3739c4637de7e62d76a0
+PKG_SOURCE_VERSION:=f03a5b2b9960d09f7ab73f000c6bc63b83e0a86d
 PKG_LICENSE:=MIT
 
 include $(INCLUDE_DIR)/package.mk
@@ -23,14 +23,14 @@ define Package/althea-babeld
   SECTION:=net
   CATEGORY:=Network
   SUBMENU:=Routing and Redirection
-  TITLE:=A fork of the Babel protocol focued on payment for routing
+  TITLE:=A fork of the Babel protocol focused on payment for routing
   URL:=http://altheamesh.com
   MAINTAINER:= Justin Kilpatrick <justin@altheamesh.com>
   DEPENDS:=@IPV6 +generate-ipv6-address +grep
 endef
 
 define Package/althea-babeld/description
- Experimental fork of the Babeld daemon for Althea, use with care.  
+ Experimental fork of the Babeld daemon for Althea, use with care.
 
  Babel is a loop-avoiding distance-vector routing protocol roughly based
  on DSDV and AODV, but with provisions for link cost estimation and
