@@ -39,7 +39,7 @@ else ifeq ($(ARCH),mips)
 	RUST_TRIPLE:=mips-unknown-linux-musl
 endif
 
-RUST_BIN_FILENAMES:=guac-light-client rita
+RUST_BIN_FILENAMES:=rita
 RUST_BIN_PATHS:=$(foreach filename, $(RUST_BIN_FILENAMES), $(PKG_BUILD_DIR)/target/$(RUST_TRIPLE)/release/$(filename))
 
 define Build/Compile
@@ -55,7 +55,8 @@ define Build/Compile
 		CXXFLAGS="$(TARGET_CXXFLAGS)" \
 		TARGET_CXXFLAGS="$(TARGET_CXXFLAGS)" \
 \
-		cargo build --all --release --target $(RUST_TRIPLE) \
+                cd rita \
+		cargo build --release --target $(RUST_TRIPLE) \
 	)
 	$(STRIP) $(RUST_BIN_PATHS)
 endef
