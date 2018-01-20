@@ -13,8 +13,8 @@ PKG_RELEASE:=0
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/althea-mesh/althea_rs
-PKG_SOURCE_VERSION:=9e7859c0db2208b66f7de7dd520924e4533df26d
+PKG_SOURCE_URL:=https://github.com/jkilpatr/althea_rs
+PKG_SOURCE_VERSION:=713c232ba0ec6e4a835f83463f5e03fdee1d0454
 PKG_LICENSE:=Apache-2.0
 
 include $(INCLUDE_DIR)/package.mk
@@ -26,7 +26,7 @@ define Package/althea-rust-binaries
   TITLE:=Althea Rust executables
   URL:=https://github.com/althea-mesh/althea_rs
   MAINTAINER:= Justin Kilpatrick <justin@altheamesh.com>
-  DEPENDS:=@IPV6
+  DEPENDS:=@IPV6 +libopenssl +libsqlite3
 endef
 
 define Package/althea-rust-binaries/description
@@ -39,13 +39,15 @@ else ifeq ($(ARCH),mips)
 	RUST_TRIPLE:=mips-unknown-linux-musl
 endif
 
-RUST_BIN_FILENAMES:=guac-light-client rita
+RUST_BIN_FILENAMES:=rita
 RUST_BIN_PATHS:=$(foreach filename, $(RUST_BIN_FILENAMES), $(PKG_BUILD_DIR)/target/$(RUST_TRIPLE)/release/$(filename))
 
 define Build/Compile
 	(\
 		cd $(PKG_BUILD_DIR) && \
 \
+		PKG_CONFIG_ALLOW_CROSS=1 \
+		OPENSSL_DIR=$(STAGING_DIR)/usr/ \
 		RUSTFLAGS="-C linker=$(TARGET_CC)" \
 		TARGET=$(RUST_TRIPLE) \
 		CC=$(TARGET_CC) \
