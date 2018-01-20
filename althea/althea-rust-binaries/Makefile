@@ -13,8 +13,8 @@ PKG_RELEASE:=0
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/althea-mesh/althea_rs
-PKG_SOURCE_VERSION:=master
+PKG_SOURCE_URL:=https://github.com/jkilpatr/althea_rs
+PKG_SOURCE_VERSION:=713c232ba0ec6e4a835f83463f5e03fdee1d0454
 PKG_LICENSE:=AGPLv3
 
 include $(INCLUDE_DIR)/package.mk
@@ -26,7 +26,7 @@ define Package/althea-rust-binaries
   TITLE:=Althea Rust executables
   URL:=https://github.com/althea-mesh/althea_rs
   MAINTAINER:= Justin Kilpatrick <justin@altheamesh.com>
-  DEPENDS:=@IPV6
+  DEPENDS:=@IPV6 +libopenssl +libsqlite3
 endef
 
 define Package/althea-rust-binaries/description
@@ -46,6 +46,8 @@ define Build/Compile
 	(\
 		cd $(PKG_BUILD_DIR) && \
 \
+		PKG_CONFIG_ALLOW_CROSS=1 \
+		OPENSSL_DIR=$(STAGING_DIR)/usr/ \
 		RUSTFLAGS="-C linker=$(TARGET_CC)" \
 		TARGET=$(RUST_TRIPLE) \
 		CC=$(TARGET_CC) \
@@ -55,8 +57,7 @@ define Build/Compile
 		CXXFLAGS="$(TARGET_CXXFLAGS)" \
 		TARGET_CXXFLAGS="$(TARGET_CXXFLAGS)" \
 \
-                cd rita \
-		cargo build --release --target $(RUST_TRIPLE) \
+		cargo build --all --release --target $(RUST_TRIPLE) \
 	)
 	$(STRIP) $(RUST_BIN_PATHS)
 endef
