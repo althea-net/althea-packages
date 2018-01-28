@@ -14,7 +14,7 @@ PKG_RELEASE:=0
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-mesh/generate-ipv6-address
-PKG_SOURCE_VERSION:=cdc6887a6310d468533654568c3b1495ea0cbf48
+PKG_SOURCE_VERSION:=master
 PKG_LICENSE:=MIT
 
 include $(INCLUDE_DIR)/package.mk
