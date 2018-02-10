@@ -21,8 +21,8 @@ include $(INCLUDE_DIR)/package.mk
 
 define Package/althea-rust-binaries
   SECTION:=net
-  CATEGORY:=utils
-  SUBMENU:=Utilities
+  CATEGORY:=Utilities
+  SUBMENU:=Althea
   TITLE:=Althea Rust executables
   URL:=https://github.com/althea-mesh/althea_rs
   MAINTAINER:= Justin Kilpatrick <justin@altheamesh.com>
