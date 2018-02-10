@@ -1,0 +1,7 @@
+---
+# A playbooks to setup and upload packages to a OpenWRT repo server
+
+- hosts: update-servers
+  user: root
+  roles:
+   - nginx
