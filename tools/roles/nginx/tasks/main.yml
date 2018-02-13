@@ -1,0 +1,34 @@
+---
+
+- name: Install nginx
+  package:
+    name: nginx
+    state: latest
+  become: true
+
+- name: start and enable
+  service:
+    name: nginx
+    enabled: true
+    state: started
+  become: true
+
+- name: Open ports for operation
+  firewalld:
+    state: enabled
+    immediate: true
+    permanent: true
+    service: http
+  become: true
+
+- name: Install rsync
+  package:
+    name: rsync
+    state: present
+  become: true
+
+- name: Copy over packages
+  synchronize:
+    src: "{{packages_dir}}"
+    dest: "/usr/share/nginx/html/"
+  become: true

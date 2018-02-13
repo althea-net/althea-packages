@@ -21,8 +21,8 @@ include $(INCLUDE_DIR)/package.mk
 
 define Package/generate-ipv6-address
   SECTION:=net
-  CATEGORY:=utils
-  SUBMENU:=Utilities
+  CATEGORY:=Utilities
+  SUBMENU:=Althea
   TITLE:=A small utility for generating IPv6 addresses
   URL:=https://www.irif.fr/~jch/software/
   MAINTAINER:= Justin Kilpatrick <justin@altheamesh.com>
