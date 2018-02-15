@@ -13,7 +13,7 @@ PKG_RELEASE:=0
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/jkilpatr/althea_rs
+PKG_SOURCE_URL:=https://github.com/althea-mesh/althea_rs
 PKG_SOURCE_VERSION:=master
 PKG_LICENSE:=Apache-2.0
 
@@ -37,9 +37,11 @@ ifeq ($(ARCH),arm)
 	RUST_TRIPLE:=arm-unknown-linux-musleabihf
 else ifeq ($(ARCH),mips)
 	RUST_TRIPLE:=mips-unknown-linux-musl
+else ifeq ($(ARCH),mipsel)
+	RUST_TRIPLE:=mipsel-unknown-linux-musl
 endif
 
-RUST_BIN_FILENAMES:=rita
+RUST_BIN_FILENAMES:="rita"
 RUST_BIN_PATHS:=$(foreach filename, $(RUST_BIN_FILENAMES), $(PKG_BUILD_DIR)/target/$(RUST_TRIPLE)/release/$(filename))
 
 define Build/Compile
@@ -56,8 +58,9 @@ define Build/Compile
 		CXX=$(TARGET_CXX) \
 		CXXFLAGS="$(TARGET_CXXFLAGS)" \
 		TARGET_CXXFLAGS="$(TARGET_CXXFLAGS)" \
+		PKG_CONFIG_ALLOW_CROSS=1 \
 \
-		cargo build --all --release --target $(RUST_TRIPLE) \
+		cargo build --all --release --target $(RUST_TRIPLE) --features "system_alloc" \
 	)
 	$(STRIP) $(RUST_BIN_PATHS)
 endef
