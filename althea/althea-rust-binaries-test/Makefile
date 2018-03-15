@@ -7,18 +7,18 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=althea-rust-binaries
+PKG_NAME:=althea-rust-binaries-test
 PKG_VERSION:=0.1
 PKG_RELEASE:=0
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/althea-mesh/althea_rs
-PKG_SOURCE_VERSION:=openwrt-support
-PKG_LICENSE:=AGPLv3
+PKG_SOURCE_URL:=http://github.com/althea-mesh/althea_rs
+PKG_SOURCE_VERSION:=master
+PKG_LICENSE:=Apache-2.0
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/althea-rust-binaries
+define Package/althea-rust-binaries-test
   SECTION:=net
   CATEGORY:=Utilities
   SUBMENU:=Althea
@@ -28,7 +28,7 @@ define Package/althea-rust-binaries
   DEPENDS:=@IPV6 +libopenssl +libsqlite3
 endef
 
-define Package/althea-rust-binaries/description
+define Package/althea-rust-binaries-test/description
   Althea Rust executables
 endef
 
@@ -70,7 +70,7 @@ define Build/Compile
 	$(STRIP) $(RUST_BIN_PATHS)
 endef
 
-define Package/althea-rust-binaries/install
+define Package/althea-rust-binaries-test/install
 	$(INSTALL_DIR) $(1)/usr/sbin
 	$(INSTALL_BIN) $(RUST_BIN_PATHS) $(1)/usr/sbin/
 	$(INSTALL_DIR) $(1)/etc
@@ -79,4 +79,4 @@ define Package/althea-rust-binaries/install
 	$(INSTALL_BIN) ./files/rita.init $(1)/etc/init.d/rita
 endef
 
-$(eval $(call BuildPackage,althea-rust-binaries))
+$(eval $(call BuildPackage,althea-rust-binaries-test))

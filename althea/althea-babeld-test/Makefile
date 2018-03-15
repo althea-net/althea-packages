@@ -7,18 +7,18 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=althea-babeld
+PKG_NAME:=althea-babeld-test
 PKG_VERSION:=0.1
 PKG_RELEASE:=0
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-mesh/babeld
-PKG_SOURCE_VERSION:=f03a5b2b9960d09f7ab73f000c6bc63b83e0a86d
+PKG_SOURCE_VERSION:=master
 PKG_LICENSE:=MIT
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/althea-babeld
+define Package/althea-babeld-test
   SECTION:=net
   CATEGORY:=Network
   SUBMENU:=Routing and Redirection
@@ -28,7 +28,7 @@ define Package/althea-babeld
   DEPENDS:=@IPV6 +generate-ipv6-address +grep
 endef
 
-define Package/althea-babeld/description
+define Package/althea-babeld-test/description
  Experimental fork of the Babeld daemon for Althea, use with care.
 
  Babel is a loop-avoiding distance-vector routing protocol roughly based
@@ -44,7 +44,7 @@ define Package/althea-babeld/description
  packge from which this package was derived.
 endef
 
-define Package/althea-babeld/conffiles
+define Package/althea-babeld-test/conffiles
 /etc/babeld.conf
 /etc/config/babeld
 endef
@@ -53,7 +53,7 @@ MAKE_FLAGS+= \
 	CFLAGS="$(TARGET_CFLAGS)" \
 	LDLIBS="" \
 
-define Package/althea-babeld/install
+defin Package/althea-babeld-test/install
 	$(INSTALL_DIR) $(1)/usr/sbin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/babeld $(1)/usr/sbin/
 	$(INSTALL_DIR) $(1)/etc
@@ -64,4 +64,4 @@ define Package/althea-babeld/install
 	$(INSTALL_BIN) ./files/babeld.init $(1)/etc/init.d/babeld
 endef
 
-$(eval $(call BuildPackage,althea-babeld))
+$(eval $(call BuildPackage,althea-babeld-test))
