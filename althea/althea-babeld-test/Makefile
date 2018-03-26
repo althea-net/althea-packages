@@ -53,7 +53,7 @@ MAKE_FLAGS+= \
 	CFLAGS="$(TARGET_CFLAGS)" \
 	LDLIBS="" \
 
-defin Package/althea-babeld-test/install
+define Package/althea-babeld-test/install
 	$(INSTALL_DIR) $(1)/usr/sbin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/babeld $(1)/usr/sbin/
 	$(INSTALL_DIR) $(1)/etc
