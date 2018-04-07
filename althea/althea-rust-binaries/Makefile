@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-rust-binaries
-PKG_VERSION:=0.1
+PKG_VERSION:=0.2
 PKG_RELEASE:=0
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-mesh/althea_rs
-PKG_SOURCE_VERSION:=openwrt-support
+PKG_SOURCE_VERSION:=pre-0.1.0
 PKG_LICENSE:=AGPLv3
 
 include $(INCLUDE_DIR)/package.mk
@@ -42,6 +42,11 @@ else ifeq ($(ARCH),mips)
 	CROSS_PREFIX:=mips-openwrt-linux-musl
 	TARGET_LD:=mips-openwrt-linux-musl-ld
 	TARGET_AR:=mips-openwrt-linux-musl-ar
+else ifeq ($(ARCH),mips64)
+	RUST_TRIPLE:=mips64-unknown-linux-gnuabi64
+	CROSS_PREFIX:=mips64-openwrt-linux-musl
+	TARGET_LD:=mips64-openwrt-linux-musl-ld
+	TARGET_AR:=mips64-openwrt-linux-musl-ar
 else ifeq ($(ARCH),mipsel)
 	RUST_TRIPLE:=mipsel-unknown-linux-musl
 	CROSS_PREFIX:=mipsel-openwrt-linux-musl
@@ -73,8 +78,6 @@ endef
 define Package/althea-rust-binaries/install
 	$(INSTALL_DIR) $(1)/usr/sbin
 	$(INSTALL_BIN) $(RUST_BIN_PATHS) $(1)/usr/sbin/
-	$(INSTALL_DIR) $(1)/etc
-	$(INSTALL_CONF) ./files/rita-default.toml $(1)/etc/
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/rita.init $(1)/etc/init.d/rita
 endef
