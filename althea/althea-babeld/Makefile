@@ -9,11 +9,11 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-babeld
 PKG_VERSION:=0.1
-PKG_RELEASE:=0
+PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-mesh/babeld
-PKG_SOURCE_VERSION:=f03a5b2b9960d09f7ab73f000c6bc63b83e0a86d
+PKG_SOURCE_VERSION:=pre-0.1.0
 PKG_LICENSE:=MIT
 
 include $(INCLUDE_DIR)/package.mk
