@@ -54,12 +54,11 @@ else ifeq ($(ARCH),mipsel)
 	TARGET_AR:=mipsel-openwrt-linux-musl-ar
 endif
 
-RUST_BIN_FILENAMES:="rita"
-RUST_BIN_PATHS:=$(foreach filename, $(RUST_BIN_FILENAMES), $(PKG_BUILD_DIR)/target/$(RUST_TRIPLE)/release/$(filename))
+RITA_PATH:="$(PKG_BUILD_DIR)/target/$(RUST_TRIPLE)/release/rita"
 
 define Build/Compile
 	(\
-		cd $(PKG_BUILD_DIR) && \
+		cd $(PKG_BUILD_DIR)/rita && \
 \
 		OPENSSL_DIR=$(STAGING_DIR)/usr/ \
 		RUSTFLAGS="-C linker=$(TARGET_CC_NOCACHE) -C ar=$(TARGET_AR)" \
@@ -70,14 +69,14 @@ define Build/Compile
 		SQLITE3_LIB_DIR="$(STAGING_DIR)/usr/lib/" \
 		CROSS_COMPILE=$(CROSS_PREFIX) \
 \
-		cargo build --all --release --target $(RUST_TRIPLE) --features "system_alloc" \
+		cargo build --release --target $(RUST_TRIPLE) --features "system_alloc" \
 	)
-	$(STRIP) $(RUST_BIN_PATHS)
+	$(STRIP) $(RITA_PATH)
 endef
 
 define Package/althea-rust-binaries/install
 	$(INSTALL_DIR) $(1)/usr/sbin
-	$(INSTALL_BIN) $(RUST_BIN_PATHS) $(1)/usr/sbin/
+	$(INSTALL_BIN) $(RITA_PATH) $(1)/usr/sbin/rita
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/rita.init $(1)/etc/init.d/rita
 endef
