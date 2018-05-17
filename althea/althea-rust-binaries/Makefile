@@ -9,11 +9,11 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-rust-binaries
 PKG_VERSION:=0.2
-PKG_RELEASE:=0
+PKG_RELEASE:=3
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-mesh/althea_rs
-PKG_SOURCE_VERSION:=pre-0.1.0
+PKG_SOURCE_VERSION:=master
 PKG_LICENSE:=AGPLv3
 
 include $(INCLUDE_DIR)/package.mk
@@ -44,9 +44,9 @@ else ifeq ($(ARCH),mips)
 	TARGET_AR:=mips-openwrt-linux-musl-ar
 else ifeq ($(ARCH),mips64)
 	RUST_TRIPLE:=mips64-unknown-linux-gnuabi64
-	CROSS_PREFIX:=mips64-openwrt-linux-musl
-	TARGET_LD:=mips64-openwrt-linux-musl-ld
-	TARGET_AR:=mips64-openwrt-linux-musl-ar
+	CROSS_PREFIX:=mips64-openwrt-linux
+	TARGET_LD:=mips64-openwrt-linux-ld
+	TARGET_AR:=mips64-openwrt-linux-ar
 else ifeq ($(ARCH),mipsel)
 	RUST_TRIPLE:=mipsel-unknown-linux-musl
 	CROSS_PREFIX:=mipsel-openwrt-linux-musl
