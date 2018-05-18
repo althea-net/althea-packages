@@ -1,0 +1,2 @@
+# Install updates at 4:30am every day
+30 4 * * * ash /etc/update.ash
