@@ -36,6 +36,15 @@ MAKE_FLAGS+= \
 	CFLAGS="$(TARGET_CFLAGS)" \
 	LDLIBS="" \
 
+define Build/Compile
+	(\
+		cd $(PKG_BUILD_DIR)/generate-ipv6-address && \
+\
+    make \
+	)
+	$(STRIP) $(RITA_PATH)
+endef
+
 define Package/generate-ipv6-address/install
 	$(INSTALL_DIR) $(1)/usr/sbin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/generate-ipv6-address $(1)/usr/sbin/
