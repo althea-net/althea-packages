@@ -13,7 +13,7 @@ PKG_RELEASE:=2
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-mesh/babeld
-PKG_SOURCE_VERSION:=pre-0.1.0
+PKG_SOURCE_VERSION:=master
 PKG_LICENSE:=MIT
 
 include $(INCLUDE_DIR)/package.mk
