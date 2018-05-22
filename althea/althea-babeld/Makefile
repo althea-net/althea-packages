@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-babeld
 PKG_VERSION:=0.1
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-mesh/babeld
@@ -25,7 +25,7 @@ define Package/althea-babeld
   TITLE:=A fork of the Babel protocol focused on payment for routing
   URL:=http://altheamesh.com
   MAINTAINER:= Justin Kilpatrick <justin@altheamesh.com>
-  DEPENDS:=@IPV6 +grep
+  DEPENDS:=@IPV6
 endef
 
 define Package/althea-babeld/description
@@ -52,6 +52,16 @@ endef
 MAKE_FLAGS+= \
 	CFLAGS="$(TARGET_CFLAGS)" \
 	LDLIBS="" \
+
+define Build/Compile
+	(\
+		cd $(PKG_BUILD_DIR) && \
+        \
+		CC=$(TARGET_CC_NOCACHE) \
+        make\
+	)
+	$(STRIP) $(PKG_BUILD_DIR)/babeld
+endef
 
 define Package/althea-babeld/install
 	$(INSTALL_DIR) $(1)/usr/sbin
