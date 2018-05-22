@@ -25,7 +25,7 @@ define Package/althea-babeld
   TITLE:=A fork of the Babel protocol focused on payment for routing
   URL:=http://altheamesh.com
   MAINTAINER:= Justin Kilpatrick <justin@altheamesh.com>
-  DEPENDS:=@IPV6 +generate-ipv6-address +grep
+  DEPENDS:=@IPV6 +grep
 endef
 
 define Package/althea-babeld/description
