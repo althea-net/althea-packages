@@ -68,6 +68,7 @@ define Build/Compile
 		PKG_CONFIG_ALLOW_CROSS=1 \
 		SQLITE3_LIB_DIR="$(STAGING_DIR)/usr/lib/" \
 		CROSS_COMPILE=$(CROSS_PREFIX) \
+		OPENSSL_STATIC=1 \
 \
 		cargo build --release --target $(RUST_TRIPLE) --features "system_alloc" \
 	)
