@@ -33,7 +33,7 @@ define Package/althea-rust-binaries/description
 endef
 
 ifeq ($(ARCH),arm)
-	RUST_TRIPLE:=arm-unknown-linux-musleabihf
+	RUST_TRIPLE:=armv7-unknown-linux-musleabihf
 	CROSS_PREFIX:=arm-openwrt-linux-muslgnueabi
 	TARGET_LD:=arm-openwrt-linux-muslgnueabi-ld
 	TARGET_AR:=arm-openwrt-linux-muslgnueabi-ar
