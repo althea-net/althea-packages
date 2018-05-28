@@ -18,6 +18,6 @@ fi
 # Note: To avoid infinite reboot loop, wait 70 seconds
 # and touch a file in /etc so clock will be set
 # properly to 4:31 on reboot before cron starts.
-if CHANGED; then
+if $CHANGED; then
 sleep 70 && touch /etc/banner && reboot
 fi
