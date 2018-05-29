@@ -13,6 +13,9 @@ fi
 if opkg install althea-cron-jobs | grep -q 'Configuring'; then
   CHANGED=true
 fi
+if opkg install althea-dash | grep -q 'Configuring'; then
+  CHANGED=true
+fi
 
 # https://wiki.openwrt.org/doc/howto/cron
 # Note: To avoid infinite reboot loop, wait 70 seconds
