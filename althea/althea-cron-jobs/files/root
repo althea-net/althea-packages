@@ -1,2 +1,2 @@
-# Install updates at 4:30am every day
-30 4 * * * ash /etc/update.ash
+# Install updates at 3:30am PST every day, devices in GMT
+30 10 * * * ash /etc/update.ash
