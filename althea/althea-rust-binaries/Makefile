@@ -37,21 +37,25 @@ ifeq ($(ARCH),arm)
 	CROSS_PREFIX:=arm-openwrt-linux-muslgnueabi
 	TARGET_LD:=arm-openwrt-linux-muslgnueabi-ld
 	TARGET_AR:=arm-openwrt-linux-muslgnueabi-ar
+	RITA_FEATURES:="guac"
 else ifeq ($(ARCH),mips)
 	RUST_TRIPLE:=mips-unknown-linux-musl
 	CROSS_PREFIX:=mips-openwrt-linux-musl
 	TARGET_LD:=mips-openwrt-linux-musl-ld
 	TARGET_AR:=mips-openwrt-linux-musl-ar
+	RITA_FEATURES:=""
 else ifeq ($(ARCH),mips64)
 	RUST_TRIPLE:=mips64-unknown-linux-gnuabi64
 	CROSS_PREFIX:=mips64-openwrt-linux
 	TARGET_LD:=mips64-openwrt-linux-ld
 	TARGET_AR:=mips64-openwrt-linux-ar
+	RITA_FEATURES:=""
 else ifeq ($(ARCH),mipsel)
 	RUST_TRIPLE:=mipsel-unknown-linux-musl
 	CROSS_PREFIX:=mipsel-openwrt-linux-musl
 	TARGET_LD:=mipsel-openwrt-linux-musl-ld
 	TARGET_AR:=mipsel-openwrt-linux-musl-ar
+	RITA_FEATURES:=""
 endif
 
 RITA_PATH:="$(PKG_BUILD_DIR)/target/$(RUST_TRIPLE)/release/rita"
@@ -70,7 +74,7 @@ define Build/Compile
 		CROSS_COMPILE=$(CROSS_PREFIX) \
 		OPENSSL_STATIC=1 \
 \
-		cargo build --release --target $(RUST_TRIPLE) --features "system_alloc" \
+		cargo build --release --target $(RUST_TRIPLE) --no-default-features --features "system_alloc $(RITA_FEATURES)" \
 	)
 	$(STRIP) $(RITA_PATH)
 endef
