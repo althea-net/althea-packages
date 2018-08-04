@@ -70,7 +70,7 @@ define Build/Compile
 		CROSS_COMPILE=$(CROSS_PREFIX) \
 		OPENSSL_STATIC=1 \
 \
-		cargo build --release --target $(RUST_TRIPLE) --features "system_alloc" \
+		cargo build --release --target $(RUST_TRIPLE) \
 	)
 	$(STRIP) $(RITA_PATH)
 endef
