@@ -52,6 +52,11 @@ else ifeq ($(ARCH),mipsel)
 	CROSS_PREFIX:=mipsel-openwrt-linux-musl
 	TARGET_LD:=mipsel-openwrt-linux-musl-ld
 	TARGET_AR:=mipsel-openwrt-linux-musl-ar
+else ifeq ($(ARCH),x86_64)
+	RUST_TRIPLE:=x86_64-unknown-linux-musl
+	CROSS_PREFIX:=x86_64-openwrt-linux-musl
+	TARGET_LD:=x86_64-openwrt-linux-musl-ld
+	TARGET_AR:=x86_64-openwrt-linux-musl-ar
 endif
 
 RITA_PATH:="$(PKG_BUILD_DIR)/target/$(RUST_TRIPLE)/release/rita"
