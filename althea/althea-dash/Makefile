@@ -35,8 +35,7 @@ endef
 define Build/Compile
 	( \
 	cd $(PKG_BUILD_DIR) &&\
-	npm install &&\
-	npm run build \
+	yarn && yarn build \
 	)
 endef
 
