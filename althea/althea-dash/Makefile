@@ -42,6 +42,7 @@ endef
 define Package/althea-dash/install
 	$(INSTALL_DIR) $(1)/www/althea
 	$(CP) $(PKG_BUILD_DIR)/build/* $(1)/www/althea
+	$(CP) ./files/index.html $(1)/www/
 endef
 
 $(eval $(call BuildPackage,althea-dash))
