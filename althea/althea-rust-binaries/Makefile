@@ -5,11 +5,12 @@
 # See /LICENSE for more information.
 #
 
+# you must set $RUST_TRIPLE in your env
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-rust-binaries
-PKG_VERSION:=0.3.4
-PKG_RELEASE:=1
+PKG_VERSION:=0.3.6
+PKG_RELEASE:=0
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-mesh/althea_rs
@@ -25,7 +26,7 @@ define Package/althea-rust-binaries
   TITLE:=Althea Rust executables
   URL:=https://github.com/althea-mesh/althea_rs
   MAINTAINER:= Justin Kilpatrick <justin@altheamesh.com>
-  DEPENDS:=@IPV6 +libopenssl +libsqlite3
+  DEPENDS:=@IPV6 +libopenssl +libsqlite3 +ipset +kmod-wireguard +wireguard
 endef
 
 define Package/althea-rust-binaries/description
@@ -33,27 +34,22 @@ define Package/althea-rust-binaries/description
 endef
 
 ifeq ($(ARCH),arm)
-	RUST_TRIPLE:=armv7-unknown-linux-musleabihf
 	CROSS_PREFIX:=arm-openwrt-linux-muslgnueabi
 	TARGET_LD:=arm-openwrt-linux-muslgnueabi-ld
 	TARGET_AR:=arm-openwrt-linux-muslgnueabi-ar
 else ifeq ($(ARCH),mips)
-	RUST_TRIPLE:=mips-unknown-linux-musl
 	CROSS_PREFIX:=mips-openwrt-linux-musl
 	TARGET_LD:=mips-openwrt-linux-musl-ld
 	TARGET_AR:=mips-openwrt-linux-musl-ar
 else ifeq ($(ARCH),mips64)
-	RUST_TRIPLE:=mips64-unknown-linux-gnuabi64
 	CROSS_PREFIX:=mips64-openwrt-linux
 	TARGET_LD:=mips64-openwrt-linux-ld
 	TARGET_AR:=mips64-openwrt-linux-ar
 else ifeq ($(ARCH),mipsel)
-	RUST_TRIPLE:=mipsel-unknown-linux-musl
 	CROSS_PREFIX:=mipsel-openwrt-linux-musl
 	TARGET_LD:=mipsel-openwrt-linux-musl-ld
 	TARGET_AR:=mipsel-openwrt-linux-musl-ar
 else ifeq ($(ARCH),x86_64)
-	RUST_TRIPLE:=x86_64-unknown-linux-musl
 	CROSS_PREFIX:=x86_64-openwrt-linux-musl
 	TARGET_LD:=x86_64-openwrt-linux-musl-ld
 	TARGET_AR:=x86_64-openwrt-linux-musl-ar

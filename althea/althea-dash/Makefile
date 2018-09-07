@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-dash
-PKG_VERSION:=0.1.5
+PKG_VERSION:=0.1.6
 PKG_RELEASE:=0
 
 PKG_SOURCE_PROTO:=git
@@ -35,14 +35,14 @@ endef
 define Build/Compile
 	( \
 	cd $(PKG_BUILD_DIR) &&\
-	npm install &&\
-	npm run build \
+	yarn && yarn build \
 	)
 endef
 
 define Package/althea-dash/install
 	$(INSTALL_DIR) $(1)/www/althea
 	$(CP) $(PKG_BUILD_DIR)/build/* $(1)/www/althea
+	$(CP) ./files/index.html $(1)/www/
 endef
 
 $(eval $(call BuildPackage,althea-dash))
