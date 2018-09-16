@@ -5,6 +5,10 @@ date > /etc/lastupdatecheck
 
 opkg update
 
+set +e
+opkg remove luci-base --force-removal-of-dependent-packages
+set -e
+
 if opkg install althea-rust-binaries | grep -q 'Configuring'; then
   CHANGED=true
 fi
