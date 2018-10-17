@@ -25,7 +25,7 @@ define Package/althea-dash
   TITLE:=Althea Dashboard
   URL:=https://github.com/althea-mesh/althea-dash
   MAINTAINER:= Justin Kilpatrick <justin@altheamesh.com>
-  DEPENDS:=@IPV6 +uhttpd
+  DEPENDS:=@IPV6 +uhttpd +px5g
 endef
 
 define Package/althea-dash/description
