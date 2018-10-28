@@ -3,7 +3,9 @@ set -eux
 CHANGED=false
 date > /etc/lastupdatecheck
 
+set +e
 opkg update
+set -e
 
 set +e
 opkg remove luci-base --force-removal-of-dependent-packages
