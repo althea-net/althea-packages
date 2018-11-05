@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-cron-jobs
-PKG_VERSION:=0.1.7
+PKG_VERSION:=0.1.8
 PKG_RELEASE:=0
 
 PKG_LICENSE:=Apache-2.0
@@ -22,7 +22,7 @@ define Package/althea-cron-jobs
   TITLE:=Althea auto update cron jobs
   URL:=https://github.com/alhtea-mesh/althea-firmware
   MAINTAINER:= Justin Kilpatrick <justin@altheamesh.com>
-  DEPENDS:=
+  DEPENDS:=+curl
 endef
 
 define Package/althea-cron-jobs/description
@@ -41,6 +41,7 @@ define Package/althea-cron-jobs/install
 	$(INSTALL_DIR) $(1)/etc/crontabs/
 	$(CP) ./files/S50cron $(1)/etc/rc.d/
 	$(CP) ./files/update.ash $(1)/etc/
+	$(CP) ./files/checkup.ash $(1)/etc/
 	$(CP) ./files/root $(1)/etc/crontabs/
 
 endef
