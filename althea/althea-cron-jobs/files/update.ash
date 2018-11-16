@@ -7,20 +7,16 @@ set +e
 opkg update
 set -e
 
-set +e
-opkg remove luci-base --force-removal-of-dependent-packages
-set -e
-
-if opkg install althea-rust-binaries | grep -q 'Configuring'; then
-  CHANGED=true
-fi
-if opkg install althea-babeld | grep -q 'Configuring'; then
-  CHANGED=true
-fi
 if opkg install althea-cron-jobs | grep -q 'Configuring'; then
   CHANGED=true
 fi
 if opkg install althea-dash | grep -q 'Configuring'; then
+  CHANGED=true
+fi
+if opkg install althea-rust-binaries | grep -q 'Configuring'; then
+  CHANGED=true
+fi
+if opkg install althea-babeld | grep -q 'Configuring'; then
   CHANGED=true
 fi
 
