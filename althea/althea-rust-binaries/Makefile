@@ -9,7 +9,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-rust-binaries
-PKG_VERSION:=0.3.10
+PKG_VERSION:=0.3.11
 PKG_RELEASE:=2
 
 PKG_SOURCE_PROTO:=git
