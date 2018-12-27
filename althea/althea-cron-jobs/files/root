@@ -1,4 +1,4 @@
 # Install updates once every 4 hours
-* */4 * * * ash /etc/update.ash
+0 */4 * * * ash /etc/update.ash
 # Every 10 minutes curl Rita and try and restart if there's no response
 */10 * * * * ash /etc/checkup.ash
