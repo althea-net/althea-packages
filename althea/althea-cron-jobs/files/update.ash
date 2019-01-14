@@ -35,10 +35,12 @@ if opkg install althea-babeld | grep -q 'Configuring'; then
   CHANGED=true
 fi
 
+set +e
 # Update exit settings only when other software is being updated
 if $CHANGED; then
 curl --header "Content-Type: application/json" --request GET --data '{"url": "https://updates.altheamesh.com/exits"}' 192.168.10.1:4877/exits/sync
 fi
+set -e
 
 # https://wiki.openwrt.org/doc/howto/cron
 # Note: To avoid infinite reboot loop, wait 70 seconds
