@@ -71,7 +71,7 @@ define Build/Compile
 		CROSS_COMPILE=$(CROSS_PREFIX) \
 		OPENSSL_STATIC=1 \
 \
-		cargo build --release --target $(RUST_TRIPLE) \
+		cargo build --release --target $(RUST_TRIPLE) --bin rita \
 	)
 	$(STRIP) $(RITA_PATH)
 endef
