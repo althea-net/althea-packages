@@ -9,8 +9,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-rust-binaries
-PKG_VERSION:=0.3.15
-PKG_RELEASE:=4
+PKG_VERSION:=0.3.16
+PKG_RELEASE:=0
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-mesh/althea_rs
@@ -26,7 +26,7 @@ define Package/althea-rust-binaries
   TITLE:=Althea Rust executables
   URL:=https://github.com/althea-mesh/althea_rs
   MAINTAINER:= Justin Kilpatrick <justin@altheamesh.com>
-  DEPENDS:=@IPV6 +libopenssl +libsqlite3 +ipset +kmod-wireguard +wireguard
+  DEPENDS:=@IPV6 +libopenssl +libsqlite3 +ipset +kmod-wireguard +wireguard +rpcd +ca-bundle +ca-certificates +kmod-sched-cake
 endef
 
 define Package/althea-rust-binaries/description
