@@ -9,6 +9,7 @@ RUST_LOG=INFO
 
 start() {
 	[ -f $config_file ] || return 1
+	sleep 30
 	(service_start $PROG --config=/etc/rita.toml --platform=linux &> /dev/null )&
 }
 
