@@ -7,21 +7,6 @@ set +e
 opkg update
 set -e
 
-set +e
-# remove luci for the 8->9 dashboard transition
-opkg remove luci-base --force-removal-of-dependent-packages
-set -e
-
-set +e
-# add firewall rule for the 11->12 payments transition
-uci add firewall rule
-uci set firewall.@rule[-1].name=Allow-Rita-Payments
-uci set firewall.@rule[-1].src=mesh
-uci set firewall.@rule[-1].target=ACCEPT
-uci set firewall.@rule[-1].dest_port=4874
-uci commit /etc/config/firewall
-set -e
-
 if opkg install althea-cron-jobs | grep -q 'Configuring'; then
   CHANGED=true
 fi
