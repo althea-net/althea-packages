@@ -38,8 +38,6 @@ endef
 
 define Package/althea-cron-jobs/install
 	$(INSTALL_DIR) $(1)/etc/crontabs/
-	$(INSTALL_DIR) $(1)/etc/init.d
-	$(INSTALL_BIN) ./files/althea-cron.init $(1)/etc/init.d/althea-cron
 	$(CP) ./files/update.ash $(1)/etc/
 	$(CP) ./files/checkup.ash $(1)/etc/
 	$(CP) ./files/root $(1)/etc/crontabs/
