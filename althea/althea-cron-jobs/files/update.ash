@@ -11,6 +11,8 @@ if opkg install althea-cron-jobs | grep -q 'Configuring'; then
   CHANGED=true
 fi
 
+opkg install ca-bundle
+
 set +e
 # Update exit settings only when other software is being updated
 if $CHANGED; then
