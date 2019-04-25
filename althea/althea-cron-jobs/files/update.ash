@@ -10,6 +10,7 @@ opkg update
 set -e
 
 if opkg install althea-cron-jobs | grep -q 'Configuring'; then
+  /etc/init.d/cron enable
   CHANGED=true
 fi
 
