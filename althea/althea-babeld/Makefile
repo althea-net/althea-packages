@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-babeld
-PKG_VERSION:=0.1.3
+PKG_VERSION:=0.1.4
 PKG_RELEASE:=0
 
 PKG_SOURCE_PROTO:=git
