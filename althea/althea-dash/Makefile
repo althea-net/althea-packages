@@ -13,7 +13,7 @@ PKG_RELEASE:=0
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-mesh/althea-dash
-PKG_SOURCE_VERSION:=master
+PKG_SOURCE_VERSION:=bcd683f58498d22647bc93c22e3272b4a710d0e0
 PKG_LICENSE:=Apache-2.0
 
 include $(INCLUDE_DIR)/package.mk
