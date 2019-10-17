@@ -2,6 +2,10 @@
 set -eux
 CHANGED=false
 date > /etc/lastupdatecheck
+# don't use the overwrite flag on the rust-binaries install
+# you will overwrite Rita configs, erase all private keys and generally
+# cause much suffering
+OPKG_FLAGS="--overwrite"
 
 # if one of the openwrt mirrors is down we don't wait to stop
 # trying to update
@@ -9,7 +13,7 @@ set +e
 opkg update
 set -e
 
-if opkg install althea-cron-jobs | grep -q 'Configuring'; then
+if opkg install althea-cron-jobs $OPKG_FLAGS | grep -q 'Configuring'; then
   /etc/init.d/cron enable
   CHANGED=true
 fi
@@ -30,7 +34,7 @@ fi
 if opkg install althea-rust-binaries | grep -q 'Configuring'; then
   CHANGED=true
 fi
-if opkg install althea-babeld | grep -q 'Configuring'; then
+if opkg install althea-babeld $OPKG_FLAGS | grep -q 'Configuring'; then
   CHANGED=true
 fi
 
