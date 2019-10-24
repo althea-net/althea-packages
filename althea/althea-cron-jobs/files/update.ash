@@ -2,10 +2,10 @@
 set -eux
 CHANGED=false
 date > /etc/lastupdatecheck
-# don't use the overwrite flag on the rust-binaries install
+# don't use the force maintainer flag on the rust-binaries install
 # you will overwrite Rita configs, erase all private keys and generally
 # cause much suffering
-OPKG_FLAGS="--overwrite"
+OPKG_FLAGS="--force-maintainer"
 
 # if one of the openwrt mirrors is down we don't wait to stop
 # trying to update
