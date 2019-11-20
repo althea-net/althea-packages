@@ -8,8 +8,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-dash
-PKG_VERSION:=0.3.7
-PKG_RELEASE:=4
+PKG_VERSION:=0.3.8
+PKG_RELEASE:=0
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-mesh/althea-dash
