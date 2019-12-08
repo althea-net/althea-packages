@@ -14,7 +14,7 @@ PKG_RELEASE:=0
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-mesh/althea_rs
-PKG_SOURCE_VERSION:=master
+PKG_SOURCE_VERSION:=27af5c443d3a29686cff6764e32c90c3550d2423
 PKG_LICENSE:=AGPLv3
 
 include $(INCLUDE_DIR)/package.mk
