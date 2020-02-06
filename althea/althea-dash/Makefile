@@ -24,7 +24,7 @@ define Package/althea-dash
   SUBMENU:=Althea
   TITLE:=Althea Dashboard
   URL:=https://github.com/althea-mesh/althea-dash
-  MAINTAINER:= Justin Kilpatrick <justin@altheamesh.com>
+  MAINTAINER:= Justin Kilpatrick <justin@althea.net>
   DEPENDS:=@IPV6 +uhttpd
 endef
 

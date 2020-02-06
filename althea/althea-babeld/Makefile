@@ -24,7 +24,7 @@ define Package/althea-babeld
   SUBMENU:=Routing and Redirection
   TITLE:=A fork of the Babel protocol focused on payment for routing
   URL:=http://altheamesh.com
-  MAINTAINER:= Justin Kilpatrick <justin@altheamesh.com>
+  MAINTAINER:= Justin Kilpatrick <justin@althea.net>
   DEPENDS:=@IPV6
 endef
 

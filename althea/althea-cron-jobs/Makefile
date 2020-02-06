@@ -21,7 +21,7 @@ define Package/althea-cron-jobs
   SUBMENU:=Althea
   TITLE:=Althea auto update cron jobs
   URL:=https://github.com/alhtea-mesh/althea-firmware
-  MAINTAINER:= Justin Kilpatrick <justin@altheamesh.com>
+  MAINTAINER:= Justin Kilpatrick <justin@althea.net>
   DEPENDS:=+curl +libustream-openssl +ca-bundle +ca-certificates
 endef
 
