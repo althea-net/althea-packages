@@ -26,7 +26,8 @@ define Package/althea-rust-binaries
   TITLE:=Althea Rust executables
   URL:=https://github.com/althea-mesh/althea_rs
   MAINTAINER:= Justin Kilpatrick <justin@altheamesh.com>
-  DEPENDS:=@IPV6 +althea-babeld +libopenssl +libsqlite3 +ipset +kmod-wireguard +wireguard +rpcd +ca-bundle +ca-certificates +kmod-sched-cake +tc
+  DEPENDS:=@IPV6 +althea-babeld +ipset +kmod-wireguard +wireguard +rpcd +ca-bundle +ca-certificates +kmod-sched-cake +tc
+  PKG_BUILD_DEPENDS:=+libopenssl +libsqlite3
 endef
 
 define Package/althea-rust-binaries/description
