@@ -20,9 +20,9 @@ define Package/althea-cron-jobs
   CATEGORY:=Utilities
   SUBMENU:=Althea
   TITLE:=Althea auto update cron jobs
-  URL:=https://github.com/alhtea-mesh/althea-firmware
+  URL:=https://github.com/althea-mesh/althea-firmware
   MAINTAINER:= Justin Kilpatrick <justin@althea.net>
-  DEPENDS:=+curl +libustream-openssl +ca-bundle +ca-certificates
+  DEPENDS:=+curl +!DEFAULT_libustream-wolfssl:libustream-openssl +ca-bundle +ca-certificates
 endef
 
 define Package/althea-cron-jobs/description
