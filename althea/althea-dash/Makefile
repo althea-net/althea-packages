@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-dash
-PKG_VERSION:=0.3.11
-PKG_RELEASE:=3
+PKG_VERSION:=0.3.28
+PKG_RELEASE:=0
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/althea-mesh/althea-dash
-PKG_SOURCE_VERSION:=91eb4428d9cab89cc2f5fd906436f5f43d427cfb
+PKG_SOURCE_URL:=https://github.com/althea-net/althea-dash
+PKG_SOURCE_VERSION:=484cf72505513467814bf87a40eed4c7e5fecd28
 PKG_LICENSE:=Apache-2.0
 
 include $(INCLUDE_DIR)/package.mk
@@ -23,7 +23,7 @@ define Package/althea-dash
   CATEGORY:=Utilities
   SUBMENU:=Althea
   TITLE:=Althea Dashboard
-  URL:=https://github.com/althea-mesh/althea-dash
+  URL:=https://github.com/althea-net/althea-dash
   MAINTAINER:= Justin Kilpatrick <justin@althea.net>
   DEPENDS:=@IPV6 +uhttpd
 endef

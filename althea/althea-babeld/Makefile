@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-babeld
-PKG_VERSION:=0.1.4
+PKG_VERSION:=0.1.6
 PKG_RELEASE:=0
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/althea-mesh/babeld
-PKG_SOURCE_VERSION:=00eee917ecbc3f7781c5b55f5dd3edc6f41b1077
+PKG_SOURCE_URL:=https://github.com/althea-net/babeld
+PKG_SOURCE_VERSION:=e7c1175956ff480496c162420a5e7a637295ed55
 PKG_LICENSE:=MIT
 
 include $(INCLUDE_DIR)/package.mk
@@ -57,6 +57,8 @@ define Build/Compile
 	(\
 		cd $(PKG_BUILD_DIR) && \
         \
+		echo "althea-babeld-$(PKG_VERSION)" > version && \
+		make version.h && \
 		CC=$(TARGET_CC_NOCACHE) \
         make\
 	)

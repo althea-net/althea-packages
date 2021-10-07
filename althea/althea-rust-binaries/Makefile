@@ -9,12 +9,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-rust-binaries
-PKG_VERSION:=0.5.37
-PKG_RELEASE:=1
+PKG_VERSION:=0.18.2
+PKG_RELEASE:=2
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/althea-mesh/althea_rs
-PKG_SOURCE_VERSION:=2f20b205eb8a2d1a544768c86aea2a72ed4bf946
+PKG_SOURCE_URL:=https://github.com/althea-net/althea_rs
+PKG_SOURCE_VERSION:=a93fa65c49bad6188b8d5b3516e49cdc31b9285b
 PKG_LICENSE:=AGPLv3
 
 include $(INCLUDE_DIR)/package.mk
@@ -23,56 +23,52 @@ define Package/althea-rust-binaries
   SECTION:=net
   CATEGORY:=Utilities
   SUBMENU:=Althea
-  TITLE:=Althea Rust executables
-  URL:=https://github.com/althea-mesh/althea_rs
+  TITLE:=Althea Rita
+  URL:=https://github.com/althea-net/althea_rs
   MAINTAINER:= Justin Kilpatrick <justin@althea.net>
   DEPENDS:=@IPV6 +althea-babeld +ipset +kmod-wireguard +wireguard +rpcd +ca-bundle +ca-certificates +kmod-sched-cake +tc
   PKG_BUILD_DEPENDS:=openssl
 endef
 
 define Package/althea-rust-binaries/description
-  Althea Rust executables
+  Althea Rita
 endef
 
-ifeq ($(ARCH),arm)
-	CROSS_PREFIX:=arm-openwrt-linux-muslgnueabi
-	TARGET_LD:=arm-openwrt-linux-muslgnueabi-ld
-	TARGET_AR:=arm-openwrt-linux-muslgnueabi-ar
-else ifeq ($(ARCH),mips)
-	CROSS_PREFIX:=mips-openwrt-linux-musl
-	TARGET_LD:=mips-openwrt-linux-musl-ld
-	TARGET_AR:=mips-openwrt-linux-musl-ar
+ifeq ($(ARCH),mips)
+        CROSS_PREFIX:=mips-openwrt-linux-musl
+        RUSTFLAGS:="-C linker=$(TARGET_CC_NOCACHE)"
+else ifeq ($(ARCH),arm)
+        CROSS_PREFIX:=arm-openwrt-linux-muslgnueabi
+        RUSTFLAGS:="-C linker=$(TARGET_CC_NOCACHE)"
+else ifeq ($(ARCH),aarch64)
+        CROSS_PREFIX:=aarch64-openwrt-linux-musl
+        RUSTFLAGS:="-C linker=$(TARGET_CC_NOCACHE)"
 else ifeq ($(ARCH),mips64)
-	CROSS_PREFIX:=mips64-openwrt-linux
-	TARGET_LD:=mips64-openwrt-linux-ld
-	TARGET_AR:=mips64-openwrt-linux-ar
+        CROSS_PREFIX:=mips64-openwrt-linux
+        RUSTFLAGS:="-C linker=$(TARGET_CC_NOCACHE)"
 else ifeq ($(ARCH),mipsel)
-	CROSS_PREFIX:=mipsel-openwrt-linux-musl
-	TARGET_LD:=mipsel-openwrt-linux-musl-ld
-	TARGET_AR:=mipsel-openwrt-linux-musl-ar
+        CROSS_PREFIX:=mipsel-openwrt-linux-musl
+        RUSTFLAGS:="-C linker=$(TARGET_CC_NOCACHE)"
 else ifeq ($(ARCH),x86_64)
-	CROSS_PREFIX:=x86_64-openwrt-linux-musl
-	TARGET_LD:=x86_64-openwrt-linux-musl-ld
-	TARGET_AR:=x86_64-openwrt-linux-musl-ar
+        CROSS_PREFIX:=x86_64-openwrt-linux-musl
+        RUSTFLAGS:=""
 endif
 
 RITA_PATH:="$(PKG_BUILD_DIR)/target/$(RUST_TRIPLE)/release/rita"
 
 define Build/Compile
 	(\
-		cd $(PKG_BUILD_DIR)/rita && \
+		cd $(PKG_BUILD_DIR) && \
 \
 		OPENSSL_DIR=$(STAGING_DIR)/usr/ \
-		RUSTFLAGS="-C linker=$(TARGET_CC_NOCACHE) -C ar=$(TARGET_AR)" \
 		TARGET=$(RUST_TRIPLE) \
-		TARGET_CC=$(TARGET_CC_NOCACHE) \
-		TARGET_CXX=$(TARGET_CXX_NOCACHE) \
-		PKG_CONFIG_ALLOW_CROSS=1 \
 		SQLITE3_LIB_DIR="$(STAGING_DIR)/usr/lib/" \
 		CROSS_COMPILE=$(CROSS_PREFIX) \
+		TARGET_CC=$(TARGET_CC_NOCACHE) \
+		RUSTFLAGS=$(RUSTFLAGS) \
 		OPENSSL_STATIC=1 \
 \
-		cargo build --release --target $(RUST_TRIPLE) --bin rita \
+		cargo build --release --target $(RUST_TRIPLE) -p rita_bin --bin rita \
 	)
 	$(STRIP) $(RITA_PATH)
 endef
