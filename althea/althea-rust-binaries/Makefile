@@ -26,7 +26,7 @@ define Package/althea-rust-binaries
   TITLE:=Althea Rita
   URL:=https://github.com/althea-net/althea_rs
   MAINTAINER:= Justin Kilpatrick <justin@althea.net>
-  DEPENDS:=@IPV6 +althea-babeld +ipset +kmod-wireguard +wireguard +rpcd +ca-bundle +ca-certificates +kmod-sched-cake +tc
+  DEPENDS:=@IPV6 +althea-babeld +ipset +kmod-wireguard +wireguard-tools +rpcd +ca-bundle +ca-certificates +kmod-sched-cake +tc
   PKG_BUILD_DEPENDS:=openssl
 endef
 
