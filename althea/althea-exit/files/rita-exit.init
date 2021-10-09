@@ -1,0 +1,21 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2006-2016 OpenWrt.org
+
+START=90
+PROG=/usr/sbin/rita-exit
+
+config_file=/etc/rita-exit.toml
+RUST_LOG=INFO
+
+start() {
+	[ -f $config_file ] || return 1
+	(service_start $PROG --config=/etc/rita-exit.toml --platform=linux &> /dev/null )&
+}
+
+stop() {
+	service_stop $PROG
+}
+
+reload() {
+	$PROG2 reload
+}
