@@ -9,7 +9,7 @@ RUST_LOG=INFO
 
 start() {
 	[ -f $config_file ] || return 1
-	(service_start $PROG --config=/etc/rita-exit.toml --platform=linux &> /dev/null )&
+	(service_start $PROG --config=/etc/rita-exit.toml &> /dev/null )&
 }
 
 stop() {
