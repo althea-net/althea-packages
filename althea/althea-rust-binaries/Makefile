@@ -10,7 +10,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-rust-binaries
 PKG_VERSION:=0.18.2
-PKG_RELEASE:=3
+PKG_RELEASE:=4
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-net/althea_rs
@@ -41,7 +41,7 @@ else ifeq ($(ARCH),arm)
         CROSS_PREFIX:=arm-openwrt-linux-muslgnueabi
         RUSTFLAGS:="-C linker=$(TARGET_CC_NOCACHE)"
 else ifeq ($(ARCH),aarch64)
-        CROSS_PREFIX:=aarch64-openwrt-linux-musl
+        CROSS_PREFIX:=aarch64-openwrt-linux-gnu
         RUSTFLAGS:="-C linker=$(TARGET_CC_NOCACHE)"
 else ifeq ($(ARCH),mips64)
         CROSS_PREFIX:=mips64-openwrt-linux
