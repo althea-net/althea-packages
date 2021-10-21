@@ -10,7 +10,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-exit
 PKG_VERSION:=0.18.2
-PKG_RELEASE:=0
+PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-net/althea_rs/
@@ -26,7 +26,7 @@ define Package/althea-exit
   TITLE:=Althea Exit
   URL:=https://github.com/althea-net/althea_rs
   MAINTAINER:= Justin Kilpatrick <justin@althea.net>
-  DEPENDS:=@IPV6 @USE_GLIBC +althea-babeld +ipset +kmod-wireguard +wireguard-tools +rpcd +ca-bundle +ca-certificates +kmod-sched-cake +tc +pgsql-cli
+  DEPENDS:=@IPV6 @USE_GLIBC +althea-babeld +ipset +kmod-wireguard +wireguard-tools +rpcd +ca-bundle +ca-certificates +kmod-sched-cake +tc +pgsql-cli-ssl
   PKG_BUILD_DEPENDS:=openssl
 endef
 
