@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-cron-jobs
-PKG_VERSION:=0.2.3
+PKG_VERSION:=0.2.4
 PKG_RELEASE:=0
 
 PKG_LICENSE:=Apache-2.0
@@ -38,7 +38,6 @@ endef
 
 define Package/althea-cron-jobs/install
 	$(INSTALL_DIR) $(1)/etc/crontabs/
-	$(CP) ./files/update.ash $(1)/etc/
 	$(CP) ./files/checkup.ash $(1)/etc/
 	$(CP) ./files/root $(1)/etc/crontabs/
 
