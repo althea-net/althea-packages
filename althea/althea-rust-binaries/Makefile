@@ -41,7 +41,7 @@ else ifeq ($(ARCH),arm)
         CROSS_PREFIX:=arm-openwrt-linux-muslgnueabi
         RUSTFLAGS:="-C linker=$(TARGET_CC_NOCACHE)"
 else ifeq ($(ARCH),aarch64)
-        CROSS_PREFIX:=aarch64-openwrt-linux-gnu
+        CROSS_PREFIX:=aarch64-openwrt-linux-musl
         RUSTFLAGS:="-C linker=$(TARGET_CC_NOCACHE)"
 else ifeq ($(ARCH),mips64)
         CROSS_PREFIX:=mips64-openwrt-linux
