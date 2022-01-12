@@ -9,12 +9,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-exit
-PKG_VERSION:=0.18.10
-PKG_RELEASE:=0
+PKG_VERSION:=0.18.11
+PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-net/althea_rs/
-PKG_SOURCE_VERSION:=e9469fd75488dd07c6860b5700d71ef97998c318
+PKG_SOURCE_VERSION:=06de09e0f45707c74ab2626a7df43a7c9f369f07
 PKG_LICENSE:=Apache-2.0
 
 include $(INCLUDE_DIR)/package.mk
