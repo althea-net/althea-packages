@@ -34,41 +34,13 @@ define Package/althea-rust-binaries/description
   Althea Rita
 endef
 
-ifeq ($(ARCH),mips)
-        CROSS_PREFIX:=mips-openwrt-linux-musl
-        RUSTFLAGS:="-C linker=$(TARGET_CC_NOCACHE)"
-else ifeq ($(ARCH),arm)
-        CROSS_PREFIX:=arm-openwrt-linux-muslgnueabi
-        RUSTFLAGS:="-C linker=$(TARGET_CC_NOCACHE)"
-else ifeq ($(ARCH),aarch64)
-        CROSS_PREFIX:=aarch64-openwrt-linux-musl
-        RUSTFLAGS:="-C linker=$(TARGET_CC_NOCACHE)"
-else ifeq ($(ARCH),mips64)
-        CROSS_PREFIX:=mips64-openwrt-linux
-        RUSTFLAGS:="-C linker=$(TARGET_CC_NOCACHE)"
-else ifeq ($(ARCH),mipsel)
-        CROSS_PREFIX:=mipsel-openwrt-linux-musl
-        RUSTFLAGS:="-C linker=$(TARGET_CC_NOCACHE)"
-else ifeq ($(ARCH),x86_64)
-        CROSS_PREFIX:=x86_64-openwrt-linux-musl
-        RUSTFLAGS:=""
-endif
-
 RITA_PATH:="$(PKG_BUILD_DIR)/target/$(RUST_TRIPLE)/release/rita"
 
 define Build/Compile
 	(\
 		cd $(PKG_BUILD_DIR) && \
-\
-		OPENSSL_DIR=$(STAGING_DIR)/usr/ \
-		TARGET=$(RUST_TRIPLE) \
-		SQLITE3_LIB_DIR="$(STAGING_DIR)/usr/lib/" \
-		CROSS_COMPILE=$(CROSS_PREFIX) \
-		TARGET_CC=$(TARGET_CC_NOCACHE) \
-		RUSTFLAGS=$(RUSTFLAGS) \
-		OPENSSL_STATIC=1 \
-\
-		cargo build --release --target $(RUST_TRIPLE) -p rita_bin --bin rita \
+		cargo install cross && \
+		cross build --release --target $(RUST_TRIPLE) -p rita_bin --bin rita --features rita_bin/bundle_openssl \
 	)
 	$(STRIP) $(RITA_PATH)
 endef
