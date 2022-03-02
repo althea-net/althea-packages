@@ -14,7 +14,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-net/althea_rs/
-PKG_SOURCE_VERSION:=6b774ebcfa3c7cbe4ea42807db449c7e651c8c4c
+PKG_SOURCE_VERSION:=7f44d4cd64f9a67f710cdad54f8b524d083450c0
 PKG_LICENSE:=Apache-2.0
 
 include $(INCLUDE_DIR)/package.mk
