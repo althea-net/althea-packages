@@ -1,0 +1,20 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2006-2016 OpenWrt.org
+
+START=90
+PROG=/usr/sbin/rita_extender
+
+RUST_LOG=INFO
+
+start() {
+	[ -f $config_file ] || return 1
+	(service_start $PROG &> /dev/null )&
+}
+
+stop() {
+	service_stop $PROG
+}
+
+reload() {
+	$PROG2 reload
+}

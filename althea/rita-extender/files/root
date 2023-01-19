@@ -1,0 +1,2 @@
+# Every 10 minutes curl Rita and try and restart if there's no response
+*/10 * * * * ash /etc/checkup.ash
