@@ -10,11 +10,11 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=rita-extender
 PKG_VERSION:=0.20.12
-PKG_RELEASE:=1
+PKG_RELEASE:=3
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-net/althea_rs
-PKG_SOURCE_VERSION:=d06fcb0eff1ff1a2c741a514c54da63a75b35127
+PKG_SOURCE_VERSION:=fbf56dbee0e9bea0e73dd115298ecdd572fd0ee2
 PKG_LICENSE:=Apache-2.0
 
 include $(INCLUDE_DIR)/package.mk
