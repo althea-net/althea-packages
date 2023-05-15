@@ -2,7 +2,7 @@
 # Copyright (C) 2006-2016 OpenWrt.org
 
 START=90
-PROG=/usr/sbin/rita-exit
+PROG=/usr/sbin/rita_exit
 
 config_file=/etc/rita-exit.toml
 RUST_LOG=INFO

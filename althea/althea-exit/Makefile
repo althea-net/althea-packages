@@ -26,7 +26,7 @@ define Package/althea-exit
   TITLE:=Althea Exit
   URL:=https://github.com/althea-net/althea_rs
   MAINTAINER:= Justin Kilpatrick <justin@althea.net>
-  DEPENDS:=@IPV6 @USE_GLIBC +althea-babeld +ipset +kmod-wireguard +wireguard-tools +rpcd +ca-bundle +ca-certificates +kmod-sched-cake +tc +pgsql-cli-ssl
+  DEPENDS:=@IPV6 @USE_GLIBC +althea-babeld +ipset +kmod-wireguard +wireguard-tools +rpcd +ca-bundle +ca-certificates +kmod-sched-cake +tc +libpq-ssl
   PKG_BUILD_DEPENDS:=openssl
 endef
 
@@ -75,7 +75,7 @@ endef
 
 define Package/althea-exit/install
 	$(INSTALL_DIR) $(1)/usr/sbin
-	$(INSTALL_BIN) $(RITA_PATH) $(1)/usr/sbin/rita-exit
+	$(INSTALL_BIN) $(RITA_PATH) $(1)/usr/sbin/rita_exit
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/rita-exit.init $(1)/etc/init.d/rita-exit
 endef
