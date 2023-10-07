@@ -10,11 +10,11 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-rust-binaries
 PKG_VERSION:=0.20.30
-PKG_RELEASE:=0
+PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-net/althea_rs
-PKG_SOURCE_VERSION:=a4d950837ac17f13aa5d6e21aaecab424c9b29b2
+PKG_SOURCE_VERSION:=3236b9a7b465fc36b82432173415f96e5dfdee45
 PKG_LICENSE:=Apache-2.0
 
 include $(INCLUDE_DIR)/package.mk
