@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=rita-exit-dash
-PKG_VERSION:=0.4.22
-PKG_RELEASE:=2
+PKG_VERSION:=0.5.0
+PKG_RELEASE:=0
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-net/rita-exit-dash
-PKG_SOURCE_VERSION:=efdfbfc5df4f383df74981729dbfb6153df1791f
+PKG_SOURCE_VERSION:=da438aedeba0a5c1caaac427b114d46bd0633abe
 PKG_LICENSE:=Apache-2.0
 
 include $(INCLUDE_DIR)/package.mk
