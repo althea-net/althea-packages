@@ -50,7 +50,7 @@ define Package/rita-exit/install
 	$(INSTALL_DIR) $(1)/usr/sbin
 	$(INSTALL_BIN) $(RITA_PATH) $(1)/usr/sbin/rita_exit
 	$(INSTALL_DIR) $(1)/etc/init.d
-	$(INSTALL_BIN) ./files/rita-exit.init $(1)/etc/init.d/rita-exit
+	$(INSTALL_BIN) ./files/rita-exit.init $(1)/etc/init.d/rita_exit
 endef
 
 $(eval $(call BuildPackage,rita-exit))
