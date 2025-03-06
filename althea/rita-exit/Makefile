@@ -10,11 +10,11 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=rita-exit
 PKG_VERSION:=0.23.0
-PKG_RELEASE:=0
+PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-net/althea_rs/
-PKG_SOURCE_VERSION:=44f5e20c31849473741a8d37cfa8ef1c93817f3c
+PKG_SOURCE_VERSION:=62a0f90ec2a290bfd6c7a7a23cb08dc6f90f4830
 PKG_LICENSE:=Apache-2.0
 
 include $(INCLUDE_DIR)/package.mk
