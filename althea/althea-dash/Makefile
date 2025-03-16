@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=althea-dash
-PKG_VERSION:=0.4.23
-PKG_RELEASE:=2
+PKG_VERSION:=0.4.25
+PKG_RELEASE:=0
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/althea-net/althea-dash
-PKG_SOURCE_VERSION:=42a366de850040e9bdec7daf049c8bd0a0338c5f
+PKG_SOURCE_VERSION:=7968e4e83457cdbf68b263e64a1b9d2f026af15f
 PKG_LICENSE:=Apache-2.0
 
 include $(INCLUDE_DIR)/package.mk
